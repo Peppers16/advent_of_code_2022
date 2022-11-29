@@ -3,7 +3,7 @@
 # Intro
 Welcome!
 
-This repo is a space for the Fincrime Data team to commit your code (either finished or work-in-progress). Hopefully this will help us 
+This repo is a space for the Fincrime Data team to commit code (either finished or work-in-progress). Hopefully this will help us 
 collaborate, share attempts, and just version control your workings!
 
 Collaborate here or in Slack #tmp-fc-data-advent-of-code-2022 
@@ -32,5 +32,5 @@ You're welcome to work individually or combine forces as you see fit on a puzzle
 non-competitive and you're encouraged to share solutions or try out new languages if you want to! 
 
 
-Note: this repo is public so don't paste anything internal-only (for some reason).
+Note: this repo is public so if for some reason you feel like pasting something internal-only: don't!
 
