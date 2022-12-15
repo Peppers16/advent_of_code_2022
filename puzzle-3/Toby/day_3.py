@@ -1,0 +1,371 @@
+# %% [markdown]
+# ## Advent of Code Day 2
+
+# %%
+import pandas as pd
+
+# %%
+input  = '''tdltdtmhlRNCBcwmHr
+WDzDPnvvGnsWLWpGJJHRzCCRZNBRrRwMNwHH
+DsDsQnJDnWsJnJvrQDPJddgShFQhjljqhggbdbbt
+LqvbLLTdvlfdqTLtbvDSRHPhHmRSnndHnHRM
+jswsGgzwsNgNWNwGJzVrgSHnhHHDmShmmGShnMDPRn
+JMNWzVwMpjpLpTfTLLTf
+HnQBjMjPQmRMmJCmBPGSFTSVWcNNGQQGGGTV
+dgstqdtsbwrzddvrvdwqzhrWSFllDSWGDWFGDNsDDWSTHT
+gpqZwwzHZhwzMJBmfZnnJLCL
+PJHbTPCmLdTtLtRtBvzBrWffft
+hnpTqhMncpFDppDqqNVFVvWzvNWNvfBfzs
+GwZccTpgnDSDDZQdCZbbClbCmm
+bnZnRZZZRlpGBbfRJjBbMfhCHwfsHShschMsHCww
+LqVtqVmtLQvVqqLTFFvLDMhDMpMhwMSLDhsDCH
+mFQWtNggVQQgmdgpJGpnnZJjbWGBRZ
+GsdGrGqvLZqWvWWdrPLdfvsvSJDDcQQhcTbFbTcCJLSJShcJ
+wmBlnjwjgHSSDQjfDDfF
+wggpmwmwNnMlHRpttRHmlPfWzdGvvvzrZWVvMrPvvZ
+jvlvTvTvTvcqTdZrdnGlVfNgspslpfGGnM
+BWQhQzQwmhwWHbWCSRMRgjpjVDDRgDgVffgV
+zLHQSBWmLcjdPjLLLZ
+BjjLnRzBnRmTSTBhpBmCjnLqNPGGVNZgNgLGddZVNVdf
+wDDJJQJlJtHrlwFFPNGGfZbbbglgfPSf
+tFQssvcDJtJcFcvwHtBmnSCvRmzzhpSCWvmC
+GvPVvVHPgzPMcFvDHssdpCpsnpHnsj
+gmhmSRZBJTTTmSBZhhrqSBLRCnsBjjnbjBdbdbbdnbjwwBsj
+WlrgrRgJSgZSJJJTZRtvVzvGtfzcVFcMzlGM
+QSZwwsBZZwjsndFsMPHLzTLLLz
+tpJfgHghmvqpNWrrTMrMMRzPrMPJ
+ghgghmlvmgNWgmWwBQcbGGSclGHjjb
+lhlnWGGFWZhDfgFfWDfrhgrRwcccqcZQBQMwcqJMTMRMqJ
+jVdpSLPVSjtNdjdPtptzLNPPzcBzwCQrCcTBTRqwwqMCJTcC
+PNHdpPLHtHtjdLghnHWvrvnFlFnf
+qttvqPdCtLrqRgfpgpMgSfSWvM
+TJccnTDjjDlDhSpfHdhpTpZf
+wldwmJdwmsstCsLzBsBCGP
+ddpCGpGpnndnpWqdVVpDGfDGFzSsFSZzBJShJsVtTstssrsr
+jbvPLwFjztJBtvJz
+wjggcgPFLlLwPFNwHmNPQqDRQfCRGCGqnpcRqQnn
+PmmGhLLcgZbPQnqH
+DlVsvvrvvvrsDJLRDvvCHbpBqpnbQnggbWZbggVW
+vJRTSSRJClCCDwTJRfSfCsGzMLmGmzmjGcfmdFNNNtfh
+vcmmMvfctfjLjvvRbLdHSnQSgQFnghSgQQSSjT
+WzVbszVNHnTsQFgZ
+pVlGlzrbDNrDrPpJNNJpVdBDvLdqvvvqqdBqcfvLdq
+gfzgzPDVZQDDSqBdtFfdFdvqBB
+MrwmTcJJsMwNmJdvFqdFGGtvvsGt
+HMmTTwcJqcrTHrjjczhZQgzghgQHhnhhHh
+BffBVgjPwPPPJwBBVJfDDsgrdZdcZqlcSnSncRNzHzZljNqq
+CmWFbCmFvMtLLQCTbbbLtRqdSZHcdnqqNqNTRlnqNH
+MpthtSMvFbvWPVDrsDgpPggD
+VVRntNwmlvhGccPNfS
+QZcgZppdrZQTzrBgCbrbdQrBvjLssPjSssMsfSLhTPPGvLTP
+ZZcpJZHpgCgpppdrJRtVJFqVFVDRWJmtVq
+dpdhtpjHtnpFRHdjRnwspMQmqpqqmVqmTVJQMmff
+gSCcBCBCcgwDBLSvcLQQVTMmfmMJDqfTrrVV
+gSwPzLBbNCbFnHHjhthh
+dLNrRmqLqRgCNNrCJrSqqSQgjDWnGpGjDjspnlslGHnnjsQj
+vVTzZFVttVBMFbFfffVVmVtHWpDspjHWWWbGjjjDsjWllW
+hwFFwztTzvZmBzVfqhSSNPRPPCRPRJCr
+BjfcmzCCTtNBNjcTDWwzPzDMMQPDPMws
+lGpJFHnlSlnZbGnQQSBLwSPPLMsDQh
+JFHHpbnZbGbZgvTmqfNgqCcvjB
+ShhpqjhhVZmHhSJSSnLzdNRNTjLwNTNTzv
+QffRWRrMGwLfgNcNgc
+GQrQDPRBlGlsGrWtrtPDPbWpqhZqSqJJpHZSVhVhhmmBZF
+ZlVVDTtTrzFDrFfB
+NNGbJNNNNmpWBNbNWmjMfdjmFfPdqFMrMj
+NQvRNvSRHSQBgRGQJJQQHTtcVLlVcTwVTllnRsttZs
+fjsDhJsVDcVJVljFDqLqFlnnCFbzbCCCZCzCtCZrnCCM
+HwQNrHWNPGPHMZCvMCbzzvHZ
+dBWwWPPGrGwBlcjDlcjcjldL
+NCLMHJZqCHHHMFlNBZtTZRvtStZdcRbc
+wDrnpbswVgsrsWmGpDpfpBQtRSTmdvBjTjtBScctRm
+gwzgbGDgpgFJMzlzPJCC
+SpnfPVqFnGfPGggqfGbjZZrtWrlRlbHpZjRZ
+mmJmdJBsBJsDwhJBQhTZtzdRltrrRlrtHjjl
+NBscQhmsmmQLLwLmhhwmcSSGfnfSFCSMCPfHCMqG
+hvVnPwZwVzQrhrVhPPPrpQVDBgMMlSTLZsgdDTSTdsssLd
+RvFCqCGfbFCRbRmSBMMsLBgdFDSgdL
+cRGjRWbWjvtPvrQcnr
+LzLNzhpcRRcTmNDzRhTPDjMvMnVlMgjngSMrMzrQQr
+tfbWfWcWddFcGFwfswFFFCrjjvlVbrQjSglSQMjgvlgl
+FHWGCHCCGcwfswqHdHqwwmPqRJDpZZNRJPRPPTTJNR
+gLHLLhTjZVMwMRSZZS
+GdqdtlPvnQPPnsRw
+tNNGvdtbdmJmHRTRJrFr
+QjjdjGDvdjwpZsssvsPZFZll
+mTWWMWzbPHmZwHHw
+JwTbtBztMVLDSpjVtc
+SZSBWtBSwnTDFSDD
+CsrJWmmPrPQmpzsPmssssvnTFhvTnPhnFDFfDFnwqF
+CCCCzprgrJJCgmVcpJmWLQZddHlGbMbdZMbtZNNcHHBt
+fgqqrZLqZqFzFFWzZzgPPbnMNNNvQnpQnQbNbpcHNP
+SdwdmwCClCCwldhRSmsvpbncjQbNNQMtjQnMvS
+mDlwhMRlCwDCTVwVJRdGgfzLLzzGzGFWqGqfGD
+CnVvCqvnRqHVqnWcMFnLmLnMMm
+ZrdzbzbrdwtQdSfdcmmFMBWFNFWLwNNp
+QFrQtJDdSZdDVHlVCPssJRll
+qMpGGmVNHMGVjRJJGfRgQtjQ
+flsTZCwDwWcZZPCrPZZWgLLjdJJQSJTQFSgQJJRt
+ZcChshwZCDvlCZCsPHMHzqNzBmMfmBBMfh
+wCtZtzCnPldZSdZp
+VMspbMHspbshbPBLFsdcsLBdLs
+pRrQHpNbQbrqRqJfnwfwzR
+DPPcDlPwNdNRJsccpgvwBBvqGGQtqrCjwr
+fMSVrMWmLZqHQgLggCHH
+mZZWVTbTWWfnMWrbmznfZfsPNcdsdpRcNJplbJNcNRNl
+ztlNSLhplhBHwwBBMBtv
+DnVVfcGbVnGRZGgvPMpHBpCmJMDP
+GnZdZZnbdpVcQjQQFjjqrlNWlrsNrFNLLsWqSF
+bJQgDRfjDbJbRMTgSSPzPHCNhzQHHszz
+wmnwFmDcwFGvpvwGnSWPNPWzPHhhcWSCNz
+GpDtmvrdGvvBmZrLTjZRTqTjblbMfL
+gBhZmtHhhhwTJqwDFqGGqPWqDb
+rRLRVTrjCrCVdFjMbvGPPGDPvW
+LSsVdrRNRCCffCSllQNBTNgNlmhHBJ
+lCzCCDMDlzzlZtttWDnDCZPbVGLhSmSLGbSgGPgVZm
+sBcNsqTQwRQRrBgbgSbPTLVSnLmV
+wcqrjQsBBjdCzjdnCv
+ZgHVtMQVVgvQjjtzdzfdFHppfmzwpz
+CsBrBLLJSrsRCvnGvfRdvF
+DbBJTJDLrJDqqqrrhJsJqVWthWlZZlZjMPZltvtMjZ
+bsHlrwlnwwQJsqmJnqsPSLzTLpPGPSgPPPWmLT
+fdvBtpMDfpCCfBcCcCBtDfFSgTMTGSTRPLgPWGzGgVgLVz
+NDcjcDZjBCdvvjdvhlbJnprjnnbhwrqn
+zRpLMMqjgMggqLDqDRVGNGdhGtvGGnvGnrznGB
+VScbcZPJZWZlZbbHSJQJGtrGvtmdBBGmdGBrdn
+cbPsZcPCcWfCZPcPQslljpDqwfqVgRLMTRjwVqLM
+QtRWhjtsbttQtnbbQvsrRBfDNdMGBLZLVVNVGNLGWd
+JwllwllJmCwzPFSJzwwTBZLDLdBBBPLZZBVTTL
+ZwFSSmpwzScFSmggHQjbQvjvscQbrtnjbs
+WMLWnSHSMnHjPVMVMVVJGM
+zQzRcmttdftrtrdZZRzDtPZppphsVbjGbQbJTTsCbsjppG
+dmrDtqfzrmZtqDvdfmZmtdqzLNlgnwgWLNvwFWgWWPNFSFNN
+hvSrMwqljjBHvqhHsHshqnrZcCCpfCZZCCZZCcCfCZ
+QDVTRFWlmDnpLnnPTPCZ
+DVQVtmQRWRRGFVRWVvlwdShBvvSqvtjMdd
+pnMQbbnDQMNMDQsnTplNTDvqPGHZGcvqmCqvmqZqmlqP
+dwJdBBwdJJwLJBLSRJczWmHPzqWzzHGmvPRHGG
+LrdFgSSLBsDMFFcbQb
+NSnwvSPPVNnPTLVpRvVvRnqhhQQzHhLbzlqcqHzmHHqh
+DFMMfBffgZJtFsJgwdDHGHHzzmqhhHQzDQGhcH
+dMrZMMgFfFtZJZfBWMfVPNwPpNwPVSNVjjVWpN
+dNlLSvLSdNlhphlhlWfVFFbZHqjjHHvqFZQHCQ
+BcrTcJfRMRmrcbqcQgcHVCVF
+fBzTJJRmfPPmnppdNwhllwlz
+GqfSSmPSFwSCmFBwfQfQBfGnggLrhTrJBDDnrddsJDdLTL
+cHHvVtptbzbrTQJTggnTQv
+QRVbbQWbpZbVQVGfRmwfFwmjflPP
+zzBQJmzQPPlddpJWlzzfdpfjvLvgmvFggMFGDVvLGHVFvvtM
+CCSTrCncrhcCcwhRnCqCttFDvMFvtWtVHvFhvLVv
+wCTNCSRnbnpWzlBpJspN
+PTzTPlrrfrbzmftTTrrjPMsNNFZQgQHVgMtNVFMgFF
+DpGBcpvdZhccdGJhqDBphZhdVRQVQQVsqFwMRwFgFNHMHwQQ
+SGcLGpdGnBhDJppSDZlPTTmLrmbTLTmrZL
+PzmhTqSzdDGcDhzdJDPBmJnrdVppNVVtgttMVrNnMMnV
+blbQbWLvlWffCjlGCWwsnLpnpMggnpspnsrg
+fQRbCZRfFZvZRQHRvHjmGmTFPcBmDhBGTzmGqS
+JJVJfgJfVDdfDDcpTBgdwQMQZQRZQZwmlmWwQGcm
+ttzzjjzSqPzqtqzFrPvzwNwMlMRNnnwnllSmmmQG
+FCvvChhsRVhhJBdB
+rbQZdRzBFTBzZZcclntHnlfJlrNgngfS
+PPqGjpPGqpmDmDwqPDVnlNpnJfnnnglJCHlNfC
+MMhhjMwwPvZNZTvLTZdL
+ZZGgVgwfQNVNLfZsPqRsVTDspTpsqs
+jdjdSbmMdMBSvMgBcWpsRpTWDHWTvRPs
+httmBMhbBBjCdzShfGzJlnQLlgGGZwww
+gLSLMCbVSGRPdTwtjtVfdt
+TpzJpFFqmzpscslBtddjlwjjDhhldhvP
+WpsTmJpHssqnHMGLnGSgbH
+RRBCpJJplCchWJJHCHCvjdpMzFzrNvVgFrrMzz
+btLLPGSQctnZnPwwSjgZjjjNNrvMvVrrjV
+tmLPGmnbnsLLwqQPSwqGbwDfHlHWBWlCsffshDCBfWcJ
+GhDFZFGZzzbCdZbZVlfv
+bPNWSbSJSWSJPBBLLqClCltlwlNmllwvCQfC
+PgPLqgqpWcWJJcnqJccccGrjbHhDRGMDGTDbpRhbFF
+VJRffrVJvDzcRcFFbpSlQLHlvtlstbbt
+NmNqPhPqPZhsQLQwSRpH
+dWRnRdBmMBWgjCgVGjFcCDzf
+nhhQFDmVmDGhmFpgCgBpcpHqncCt
+fLLZbljhjjscCggBCLCL
+PhMRhNWddWNjfRdPRfWNfVmvQFVQzVMJJDJGrmQGrQ
+PNQtsHvZtsQgQLPsPtHZbfzRffRzMMqRqpzbfqng
+jDwCmhrDlhBhBldrzJMmfFFbSfFnqpFb
+jdljDrDrTBBnGVNcGcQLQLQPQL
+MjzrjZvWQRHtjQdS
+JFJlDJbcbvtRQmQbQQdf
+JqNDBVNpqCBqDBCBVDcNVBqNMWgGZTPZgCrPzzvghPwrwZgG
+gzggttLNDFztFCNWzrLttmFddSjsdJsgZVSsJjwjgbgZVG
+pPPcqpnqHMpcRbhhMMpThvnwZSjZvdwZvwdZSBvGZSGVZZ
+ThcPlHbbPHRnlRTHnMhpfltrNLWzCWWCztzffQLLDmDN
+SlNJRpCGTmdFFDcbqJZFFJ
+wwnWPHgsLPlVVfssLcZcjjzrDqcFzcgchZ
+WVvQHQPfLwSGSvCRlNSd
+wWnWcpWDcwHcRdJQTdmNsT
+hprqBSvZNjFdFjsq
+fSfpvhLBfltMCLzWzC
+fdPfPwPmdmLZfNWjWszQNjjN
+MBRSBBRBChMRQWhlmVWNsmzm
+FvRcSrcRrtvrRrvrrrmcwGwLnTHHqGtwZwHdGPHP
+tFPlJcDJdvLZvFlcvlHtQRthbgQjrhsgQgNr
+qCnpGMnTTVwCCMnqwWfpChQHRbrgQjsQmmfrrHgHrH
+GMnTSBnVTnBGbLlDDvFBLDbF
+rJhPGdLSWnnrdqLhPPWGjcZZffjcgNdgNgRcNfwf
+mHsDTQlsQBvWspTHzpmCTpcZgwZjZfZNRFwRjRRNMHjZ
+vCzDDQsDDvbllWTllCDCCTSLbqSPVqSnJLGSqrPLtVnP
+sSRdHHHSRhjShVHWVFJdQPNFpGCrQCCfflqlPvfN
+gLztmctMwnBtTzMppBCCrGfQlQQqBN
+bbbncfzLmmmnnZLgHZWjhsjVJjHRVSdR
+bRgwCHfgfCCttRbdRLHzzGDnDnLBhmBGzvmFZD
+rssprQlqlTQGNPcJGVsTBDmWzBnPnhWBvZZDBvDm
+MQQTJTNGNcqrNwMwwHRdRbdgbj
+sBnnsDLDBCsLTngnZLcdmppCdmpRJwJJQdMRMP
+NlrTblbNNbwRPpjjbPdJ
+GlztrhvfGqltqzWrcZgFZVSWWSTSncnL
+FLJqLFRjzFqzJddlLfNNCjPrGSHCPHNVNVSH
+TWTpngssgcPgNGPc
+pGMDZpnZBMDsTTTnTsQWWZTRlbvdfZlLflZzJfdqvdRbqf
+ClsJpCgsppMbFFFbHp
+PvQRPqQPvRdwLNZLZqqwGPPPNTbjMcFcfHjHcMNfBNHrcDDM
+GLRnzqzdRqwdZnLLPqqZdQGsVtsnlWCVVWsgtWSSVVhFWt
+LNLSJjQDLlzRGwTTzQfT
+WbZqchqMZqZWbmdZbhTrvPmGvwfHRHGTHRwH
+dcfChsWWZgbfWdhCbgDNFBBDjFNBjjVNpD
+HjCLsHJHCjnNVHdCnHtJdtQQgQDhFGFDLcwFDBFMMDBT
+vWrSWSbSrRqmzlWlQgRQQTcRMgMTMFwT
+bzrpWWzbqrpnZsJwZVpC
+FhlfrNdTrtFdtrrrfcZBMdpZcHHHZMcccv
+PmbjVDjwQbbjjVpDDvpzBZSSMsvG
+jmbVjPVWqVmgJgjmmPPQjmqlCMlftnftnNlTTLLfNfrJtN
+PwMWzqwWbFwznqNQQhffQjJfnhfJ
+mmdpgmttDrpgpdmZdHmgNsQVZvJNMQvVJffsZVQf
+pdcBrMgDgcgrrHPcFSFzzqzFFbPS
+QRJJtSfJtQtjQRnSnNssTNdgsgdwddRWcm
+qHMDhPBqbqZVzbddTcVwSmNWNVcc
+BFCZbqPbHBPMhCljvQSvGCCpnj
+HSzHNHlNHmBSHSBFrFFgBHVVqbQLTTcLtqDsDTBTDcDp
+CWQZGCWfMZGqbTbtpLsbWp
+GwjhPCRZPQPPCPwmzSNzzzmwzlzSgH
+GgTvJbpJGvPVHZZZLW
+cwWdnwmWnfwZDBHHNzZBVf
+nhjjmshdwmSjsnmwrrQrtbtbgTTgrWth
+lFBTtcnlcFlppVpttcFZVhTTDDLCHDSDCjDCMSLZDWdDDSjD
+mrfsgMfRRwwPffJfbdDdgWGLGLSDjSSWdC
+MmfNPwPzMzlhlFlplV
+pRVgVsRzdDVJJJRttZTnnLrGsrGssG
+BjMvMBWmjWNWSWrLGZPTHLSLTrZr
+LLMWQjfvmljLBRVJfbChfVgJRz
+RPDsdnVrVnVzScStjpFSjV
+BTLBhMMBpSMsMjZz
+hwbBgTsbBbGrGHvGrvDnPH
+nzwgtSFRqhDphDwB
+CmWCrrmrVPGCDTbpvvvhsZDG
+VdNrlWHpmQzSMgJFdRFz
+jrhZtczchvvFCTmCDlDMrMDT
+bHbLnbbwLnWQpLQgQVpQCTDqdmwqmDqCdDCSlmdd
+sgVgglblptsfFthtvR
+LctzWvrzTWsvWBfvBzdJQSdQhQQfpDJJmmDD
+lMRwjlwlLnZwLHLggQDRGphdFDJQdSdJJQ
+CjPZCVCjgPwgWqWLqzzcWsVq
+JNWHsPNsJNHBnfnnqfqswcctDTmPCRmmTRtgCdmD
+rjGrLrbhGRZVGQhphbbmDgDZMDMwdwDcCMgcDM
+zvbLvVpFvjzVhbQjGjHlnflJFlWRqBWWBJBS
+NfCMfGNdGqVDhWBvncLllhBgcmgL
+bJbRbHHtRtJtZTpSRtsLDLzvcvBmgnnnJlsm
+SbbbTRpbQHSbbwHZZTHqfCNMfqFWGNGVQMFGDC
+MdzwdMpVwVNMHQMJNcHM
+mDtcPDqWnDqgnGJvLHTJHJ
+mmjhhRBRBcdZrcdRCz
+lvldsNpNGCGgCvCGggDLMbMmrdwnjjZdLLwrjM
+HWHtPHSHPBnrmZjBbwwC
+tHqWRtfttNlDClvNqs
+BTRNQTQTTBFRTglDwzztDgCwLF
+jZsMjqgdrrzzSbsDSwsw
+jWZrMgMjGdvrWWvrWMfMfZTBHTHQBHBQNpQRfRHNpnRT
+GRgFCPhnBBhPwZPnwdbWMJMlcJTLLlTlRT
+VQsvVvvVNzqsscTVSLbWTStTJW
+spfDNpvsnPCfhBbh
+GhWSgWphprhQqqndQd
+MvZRjjLcCzwcLnHfdTdgfFHQ
+wCczcCgRMwRRNCtjMCtCvlBmVDGslmPpmWWNVGSpWV
+PZqgTbTZvFgZbZnFvPlBsVqsGBlGVzGsqVls
+MMhSmHHfrfrSrjMNfcjrSRBlBVzGVpVGgGVCGslGNd
+rMhQQmDSQMjMtZvPTTnJvtQg
+TNGWlqVpmPssnNssWLtRfCLbjCCwPgLjfg
+ZSHvHczFBBcHhJHFvhHcSFgrCgLbfgfbwrLTtbjwLwJr
+BMzSQzcQznlNQTQsnl
+FVWDZDZHpDdtZlqZqZqljfNmsNFPjbbPbPRbFFjm
+MJSGMghngrccvSrSzMrsQbbRmjmQmjtNtbfB
+CMnvczGChCCwcgtpDDlLLLwVHdlHTZ
+fTTzbQzhDwwbCnZnpbgnHncM
+mGtBRBFmsRpVGMzpnnGL
+lFNqtdsssrRFBltSFRFlSrvfDSWWvwfhhPJPjWfQzPvf
+GWWWQlpSZzrQnjQdRHVjdjTRvddddB
+ztthMtCmffcChJhChfCJdLddLBBgvqdvBBVBcgdq
+smbsmbmChCJmJffPmhNthDtZwnFQZQGpSrGWGQGZpQZzWP
+ZDzsjjFLFqsQzFsZqDzBHGtBHpmgdNGmGBtLBG
+hbbMMTcWhbwnJPlwWrnPbbVGVNndgpVVHmdNHVBmmmtf
+bCTPTclcgRZQZCgs'''
+
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+# %%
+backpacks = input.split('\n')
+priority_dict = {}
+counter = 1
+for letter in letters:
+    priority_dict[letter] = counter
+    counter += 1
+
+# %%
+both_compartments_df = pd.DataFrame(columns = ['items', 'shared_items', 'priority_score'])
+backpack = backpacks[6]
+for backpack in backpacks:
+    full_contents = len(backpack)
+    halfway = int(len(backpack)/2)
+    full_contents
+
+    compartment_one = list(backpack[:halfway])
+    compartment_two = list(backpack[halfway:])
+
+    both_compartments_ls = []
+    for compartment_one_item in compartment_one:
+        if compartment_one_item in compartment_two:
+            both_compartments_ls.append([compartment_one_item, priority_dict[compartment_one_item]])
+        else:
+            pass
+    # both_compartments_ls = list(dict.fromkeys(both_compartments_ls))
+    both_compartments_df.loc[len(both_compartments_df)] = [backpack, both_compartments_ls[0][0], both_compartments_ls[0][1]]
+both_compartments_df
+
+# %%
+both_compartments_df['priority_score'].sum()
+
+# %%
+elf_mapping = {}
+number_of_elves = len(backpacks)
+
+for backpack_group in range(int(number_of_elves/3)):
+    backpacks_ls = []
+    for time in range(3):
+        backpacks_ls.append(backpacks[time + backpack_group * 3])
+    elf_mapping[backpack_group+1] = backpacks_ls
+elf_mapping
+
+# %%
+groups = elf_mapping.values()
+groups_df = pd.DataFrame(columns = ['group', 'common_character', 'common_character_priority'])
+for group in groups:
+    common_characters = []
+    for character in group[0]:
+        if character in group[1] and character in group[2]:
+            common_characters.append([group, character, priority_dict[character]])
+            # print(common_characters)
+    groups_df.loc[len(groups_df)] = common_characters[0]
+    
+groups_df
+
+
+# %%
+groups_df['common_character_priority'].sum()
+
+
